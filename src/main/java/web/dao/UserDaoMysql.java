@@ -15,19 +15,22 @@ public class UserDaoMysql implements UserDao {
 
     @Override
     public void add(User user) {
+        sessionFactory.getCurrentSession().persist(user);
     }
 
     @Override
-    public void remove(long id) {
+    public void remove(User user) {
+        sessionFactory.getCurrentSession().remove(user);
     }
 
     @Override
     public void update(User user) {
+        sessionFactory.getCurrentSession().update(user);
     }
 
     @Override
     public User getById(long id) {
-        return null;
+        return sessionFactory.getCurrentSession().get(User.class, id);
     }
 
     @Override
