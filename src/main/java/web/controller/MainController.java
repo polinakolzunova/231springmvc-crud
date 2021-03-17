@@ -55,4 +55,9 @@ public class MainController {
         return "delete";
     }
 
+    @GetMapping("/test")
+    public String getTest(){
+        return "test";
+    }
+
 }
