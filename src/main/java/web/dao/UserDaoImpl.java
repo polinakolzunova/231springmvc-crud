@@ -14,8 +14,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+    /*@Autowired
+    private SessionFactory sessionFactory;*/
 
     private static final AtomicInteger AUTO_ID = new AtomicInteger(3);
     private static final Map<Long, User> users = new HashMap<>();
@@ -26,8 +26,6 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void add(User user) {
-        //sessionFactory.getCurrentSession().save(user);
-
         user.setId(AUTO_ID.getAndIncrement());
         users.put(user.getId(), user);
     }
@@ -50,11 +48,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<User> listUsers() {
-        /*TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
-        return query.getResultList();*/
-
         return new ArrayList<>(users.values());
-
     }
 
 }
