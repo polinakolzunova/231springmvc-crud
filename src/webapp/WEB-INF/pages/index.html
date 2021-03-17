@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users CRUD | Read</title>
+</head>
+<body>
+
+<h1>Users CRUD | Read</h1>
+
+<a href="/add">add</a>
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>lastname</th>
+        <th>age</th>
+        <th>*</th>
+        <th>x</th>
+    </tr>
+
+    <tr th:each="user : ${users}">
+        <td th:utext="${user.getId()}">id</td>
+        <td th:utext="${user.getName()}">name</td>
+        <td th:utext="${user.getLastname()}">lastname</td>
+        <td th:utext="${user.getAge()}">age</td>
+        <td><a th:href="@{'/edit/'+${user.getId()}}">edit</a></td>
+        <td><a th:href="@{'/delete/'+${user.getId()}}">delete</a></td>
+    </tr>
+</table>
+
+</body>
+</html>
