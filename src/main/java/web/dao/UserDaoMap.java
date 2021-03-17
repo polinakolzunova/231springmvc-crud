@@ -26,8 +26,8 @@ public class UserDaoMap implements UserDao {
     }
 
     @Override
-    public void remove(long id) {
-        users.remove(id);
+    public void remove(User user) {
+        users.remove(user.getId());
     }
 
     @Override

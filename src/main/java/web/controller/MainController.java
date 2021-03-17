@@ -48,9 +48,8 @@ public class MainController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String getDelete(@PathVariable("id") long id, ModelMap model){
-        model.addAttribute("user", userService.getById(id));
-        userService.remove(id);
+    public String getDelete(@ModelAttribute("user") User user, ModelMap model){
+        userService.remove(user);
 
         return "delete";
     }
