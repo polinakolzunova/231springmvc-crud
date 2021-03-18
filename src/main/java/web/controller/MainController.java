@@ -41,14 +41,14 @@ public class MainController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String postEdit(@PathVariable("id") long id, @ModelAttribute("user") User user, ModelMap model){
+    public String postEdit(@PathVariable("id") long id, @ModelAttribute("user") User user){
         userService.update(user);
 
         return "redirect:/";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String getDelete(@ModelAttribute("user") User user, ModelMap model){
+    public String getDelete(@ModelAttribute("user") User user){
         userService.remove(user);
 
         return "delete";
