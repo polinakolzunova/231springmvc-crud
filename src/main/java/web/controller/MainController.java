@@ -51,7 +51,7 @@ public class MainController {
     public String getDelete(@ModelAttribute("user") User user){
         userService.remove(user);
 
-        return "delete";
+        return "redirect:/";
     }
 
     @GetMapping("/test")

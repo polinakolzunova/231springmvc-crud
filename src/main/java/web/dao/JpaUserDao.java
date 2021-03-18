@@ -22,12 +22,13 @@ public class JpaUserDao implements UserDao {
 
     @Override
     public void remove(User user) {
-        //entityManager.remove(user);
+        User managedUser = entityManager.merge(user);
+        entityManager.remove(managedUser);
     }
 
     @Override
     public void update(User user) {
-        //entityManager.update(user);
+        entityManager.merge(user);
     }
 
     @Override
