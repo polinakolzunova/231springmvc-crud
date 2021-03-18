@@ -12,34 +12,29 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    @Qualifier("userDaoMysql")
+    @Qualifier("jpaUserDao")
     private UserDao userDao;
 
-    @Transactional
     @Override
     public void add(User user) {
         userDao.add(user);
     }
 
-    @Transactional
     @Override
     public void remove(User user) {
         userDao.remove(user);
     }
 
-    @Transactional
     @Override
     public void update(User user) {
         userDao.update(user);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public User getById(long id) {
         return userDao.getById(id);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<User> listUsers() {
         return userDao.listUsers();

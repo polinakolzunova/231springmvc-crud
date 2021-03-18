@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
-public class UserDaoMap implements UserDao {
+public class MapUserDao implements UserDao {
 
     private static final AtomicInteger AUTO_ID = new AtomicInteger(3);
     private static final Map<Long, User> users = new HashMap<>();

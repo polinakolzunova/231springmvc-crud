@@ -3,12 +3,14 @@ package web.dao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
 
 import java.util.List;
 
 @Repository
-public class UserDaoMysql implements UserDao {
+@Transactional(value = "htm")
+public class HibernateUserDao implements UserDao {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -29,11 +31,13 @@ public class UserDaoMysql implements UserDao {
     }
 
     @Override
+    @Transactional(value = "htm", readOnly = true)
     public User getById(long id) {
         return sessionFactory.getCurrentSession().get(User.class, id);
     }
 
     @Override
+    @Transactional(value = "htm", readOnly = true)
     @SuppressWarnings("unchecked")
     public List<User> listUsers() {
         return sessionFactory.getCurrentSession().createQuery("from User", User.class).list();
